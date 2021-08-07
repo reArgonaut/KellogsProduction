@@ -1,0 +1,144 @@
+<div class="s-layout">
+  <!-- Sidebar -->
+  <div class="s-layout__sidebar">
+    <a class="s-sidebar__trigger" href="#0">
+      <i class="las la-bars"></i>
+    </a>
+
+    <nav class="s-sidebar__nav">
+      <ul>
+        <li>
+          <a class="s-sidebar__nav-link" href="#0">
+            <i class="fa fa-home"></i><em>Inicio</em>
+          </a>
+        </li>
+        <li>
+          <a class="s-sidebar__nav-link" href="#0">
+            <i class="fa fa-camera"></i><em>Productos</em>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Content -->
+  <main class="s-layout__content">
+    <div class="">
+
+      <div class="card bg-dark">
+        <div class="card-body bg-dark">
+          <div class="input-group">
+            <input type="text" class="form-control" (keyup)="applyFilter($event.target.value)"
+              placeholder="Buscar..." />
+          </div>
+        </div>
+      </div> <br>
+      <button class="btn btn-primary" (click)="resetForm();nuevo=!nuevo"><span>Nuevo </span> <i
+          class="las la-plus-circle"></i></button>
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" id="reportes">
+        <br>
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let element"> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="precio">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio</th>
+          <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="marca">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Presentación </th>
+          <td mat-cell *matCellDef="let element"> {{element.marca}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element"><button class="button btn-success"
+              (click)="onEdit(element); action=!action"><i class="las la-edit"></i></button></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons></mat-paginator>
+    </div>
+
+
+
+    <div class="" *ngIf="!action">
+
+      <form class="producto center-block" [formGroup]="simpleForm">
+        <h2 style="margin-left: 15%;">Editar producto</h2>
+
+        <input type="hidden" name="_id" formControlName="_id">
+        <div class="form-group col-md-9">
+          <label style="margin-left: 15%;" for="nombre">Nombre:</label>
+          <input style="margin-left: 15%;" type="text" class="form-control" id="nombre" name="nombre"
+            formControlName="nombre">
+        </div>
+
+        <div class="form-group col-md-9">
+          <label style="margin-left: 15%;" for="precio">Precio:</label>
+          <input style="margin-left: 15%;" type="text" class="form-control" id="precio" name="precio"
+            formControlName="precio">
+        </div>
+
+        <div class="form-group col-md-9">
+          <label style="margin-left: 15%;" for="marca">Presentación:</label>
+          <input style="margin-left: 15%;" type="text" class="form-control" id="marca" name="marca"
+            formControlName="marca">
+        </div>
+        <br>
+        <input style="margin-left: 15%;" class="btn btn-success" type="submit" (click)="onSubmit();action=!action"
+          value="Guardar">
+
+
+      </form>
+    </div>
+    <div class="" *ngIf="!nuevo">
+
+      <form class="producto center-block" [formGroup]="simpleForm">
+        <h2 style="margin-left: 15%;">Nuevo producto</h2>
+
+        <input type="hidden" name="_id" formControlName="_id">
+        <div class="form-group col-md-9">
+          <label style="margin-left: 15%;" for="nombre">Nombre:</label>
+          <input style="margin-left: 15%;" type="text" class="form-control" id="nombre" name="nombre"
+            formControlName="nombre">
+        </div>
+
+        <div class="form-group col-md-9">
+          <label style="margin-left: 15%;" for="precio">Precio:</label>
+          <input style="margin-left: 15%;" type="text" class="form-control" id="precio" name="precio"
+            formControlName="precio">
+        </div>
+
+        <div class="form-group col-md-9">
+          <label style="margin-left: 15%;" for="marca">Presentación:</label>
+          <input style="margin-left: 15%;" type="text" class="form-control" id="marca" name="marca"
+            formControlName="marca">
+        </div>
+        <br>
+        <button type="button" class="reset btn btn-secondary" (click)="resetForm()" value="Reset">Reset</button>
+        <input style="margin-left: 15%;" class="btn btn-success" type="submit" (click)="onSubmit();nuevo=!nuevo"
+          value="Guardar">
+
+
+      </form>
+    </div>
+
+
+
+
+
+
+  </main>
+
+
+</div>

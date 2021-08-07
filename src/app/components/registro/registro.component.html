@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+
+<div class="container h-100 ">
+  <div class="row h-100 justify-content-center align-items-center ">
+    <div class="card registro text-light" style="width: 18rem;">
+      <div class="card-body">
+        <div class="back">
+          <div class="div-center">
+            <div class="content">
+              <h3>Registrarse</h3>
+              <hr />
+              <form [formGroup]="registroForm" (submit)="signUp()">
+                <div class="form-group">
+                  <label for="email">Correo Electronico:</label>
+                  <input type="email" class="form-control" id="email" formControlName="email"
+                    placeholder="Correo Electronico">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Contraseña:</label>
+                  <input type="{{contrasena}}" formControlName="password" class="form-control"
+                    id="exampleInputPassword1" placeholder="Contraseña">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Confirmar Contraseña:</label>
+                  <input type="{{contrasena}}" formControlName="confirmpassword" class="form-control"
+                    id="exampleInputPassword1" placeholder="Contraseña">
+                </div>
+                <label class="container-checkbox1">
+                  <input (click)="monstrarContrasena(!flag)" type="checkbox">
+                  <span class="checkmark"> </span>Mostrar Contraseña
+                </label>
+                <br>
+                <button type="submit" class="btn btn-danger justify-content-center text-center">Registrarse</button>
+                <hr />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<app-footer></app-footer>

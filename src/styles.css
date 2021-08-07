@@ -1,0 +1,16 @@
+.login-pagina{
+    /* background: linear-gradient(  #4e89ae 30%, #133b5c ); */
+    background: 
+    url("./assets/img/fondoloops.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+
+      height: auto;
+      margin: 0;
+      background-size:cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
